@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card" style="width: 18rem;">
+            <img src="<%=sights.image %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=sights.title %></h5>
+              <p class="card-text"><%=sights.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-muted"><%=sights.location %></li>
+              <li class="list-group-item">Submited by <%=sights.author.username%></li>
+            </ul>
+            <% if( currentUser && sights.author.equals(currentUser._id)) { %> 
+            <div class="card-body">
+                <a class="card-link btn btn-warning" href="/sights/<%=sights._id%>/edit">Edit</a>
+                <form class="d-inline" action="/sights/<%=sights._id%>?_method=delete" method="post">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+            <% } %> 
+          </div>
+          
+            </div>
+          </form>
+    </div>
+</div>

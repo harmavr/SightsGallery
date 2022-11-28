@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %> 
+    <div class="row">
+        <h1 class="text-center">Edit Sight</h1>
+        <div class="col-6 offset-3">
+            <form action="/sights/<%=sights._id%>?_method=PUT" method="post" novalidate class="validated-form" >
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="sight[title]" id="title" 
+                    value="<%=sights.title %>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="sight[location]" id="location"
+                    value="<%=sights.location %>"required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image Url</label>
+                    <input class="form-control" type="text" name="sight[image]" id="image"
+                    value="<%=sights.image %>">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="sight[description]" cols="2" rows="10" id="description"
+                    required><%=sights.description %></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">Update Sight</button>
+                </div>
+            </form>
+        </div>
+    </div>

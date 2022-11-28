@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %> 
+    <h1>All sights</h1>
+        <% for (let sight of sights) {%>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-fluid" alt="" src="<%=sight.image%>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=sight.title  %> </h5>
+                            <p class="card-text"><%=sight.description  %> </p>
+                            <p class="card-text">
+                                <small class="text-muted"><%=sight.location  %></small>
+                            </p>
+                            <a class="btn btn-primary" href="/sights/<%=sight._id%>">View <%=sight.title %> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>  
+    
