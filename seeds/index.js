@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const Sight = require('../models/sight');
+const User = require('../models/user')
 
 mongoose.connect('mongodb://127.0.0.1:27017/myApp',{
     useNewUrlParser: true, useUnifiedTopology: true
@@ -13,10 +14,18 @@ db.once('open',()=>{
 });
 
 const seedDB = async ()=>{
+
+   
+    await User.deleteMany({});
+
+    const user = new User({username:'haris',email:'haris@gmail.com'})
+    await User.register(user,'pao');
+
+
     await Sight.deleteMany({});
    
         const sight1 = new Sight({
-            author:'6380906a02e868a0bc43e825',
+            author:user._id,
             location: 'France',
             title: 'Eiffel Tower',
             image: 'https://www.kids-world-travel-guide.com/images/xparis_eiffeltower_ssk500.jpeg.pagespeed.ic.2lwZPZtnJ8.jpg',
@@ -28,7 +37,7 @@ const seedDB = async ()=>{
         await sight1.save();
 
         const sight2 = new Sight({
-            author:'6380906a02e868a0bc43e825',
+            author:user._id,
             location: 'China',
             title: 'Great Wall',
             image: 'https://www.kids-world-travel-guide.com/images/xchina_wall_ssk500.jpeg.pagespeed.ic.g_9Qpc2Tzf.jpg',
@@ -40,7 +49,7 @@ const seedDB = async ()=>{
         await sight2.save();
 
         const sight3 = new Sight({
-            author:'6380906a02e868a0bc43e825',
+            author:user._id,
             location: 'Russia',
             title: 'Kremlin',
             image: 'https://www.kids-world-travel-guide.com/images/xrussia_kremlin_500.jpeg.pagespeed.ic.7xplAtki0b.jpg',
@@ -52,7 +61,7 @@ const seedDB = async ()=>{
         await sight3.save();
 
         const sight4 = new Sight({
-            author:'6380906a02e868a0bc43e825',
+            author:user._id,
             location: 'Egypt',
             title: 'Great Pyramid of Giza',
             image: 'https://www.kids-world-travel-guide.com/images/xital_pisa_500.jpg.pagespeed.ic.tOXMILMJS7.jpg',
@@ -60,6 +69,9 @@ const seedDB = async ()=>{
             The Egyptian pyramids were built during a time when there was only manual labour and no machine lifting equipment available. The pyramids were build to house the bodies of the pharaoh who ruled in ancient Egypt. Next to the Giza pyramids there is the Sphinx, the famous monument of a lion body with a pharaoh’s head.'
         })
         await sight4.save();
+
+       
+
     }
 
 seedDB().then(()=>{
