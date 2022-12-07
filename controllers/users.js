@@ -28,7 +28,7 @@ module.exports.login = (req,res)=>{
 
 module.exports.loginRedirect= (req, res) => {
     req.flash('success', 'welcome back!');
-    res.redirect('/sights');
+    res.redirect('/');
 }
 
 
@@ -37,6 +37,6 @@ module.exports.logout = (req, res, next)=> {
     req.logout((e)=> {
       if (e)  return next(e);  
         req.flash('success', "Goodbye!");   
-        res.redirect('/sights');
+        res.redirect('/');
     });
   }
